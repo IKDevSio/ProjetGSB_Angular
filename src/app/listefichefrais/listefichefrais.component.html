@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+<BR> <BR> <BR>
+<div>
+  <h1>
+    {{titre }}
+  </h1>
+  <BR> <BR>
+</div>
+<div class="container">
+  <div class="col-md-12">
+    <table class="table table-bordered table-striped table-responsive">
+      <thead>
+      <tr>
+        <th style="width:5%; text-align: center;">idFrais</th>
+        <th style="width:10%; text-align: center;">anneeMois</th>
+        <th style="width:16%; text-align: center;">Date Modification</th>
+        <th style="width:15%; text-align: center;">Montant validé</th>
+        <th style="width:25%; text-align: center;">Nombre de justificatifs</th>
+        <th style="width:10%; text-align: center;">id Visiteur</th>
+        <th style="width:70%; text-align: center;">Libellé Etat</th>
+        <th style="width:10%; text-align: center;">Modifier</th>
+        <th style="width:10%; text-align: center; color: red; ">Supprimer</th>
+      </tr>
+
+      </thead>
+      <tr *ngFor="let unFrais of mesFrais">
+        <td>{{unFrais.id_frais}}</td>
+        <td>{{unFrais.anneemois}}</td>
+        <td>{{unFrais.datemodification}}</td>
+        <td>{{unFrais.montantvalide}}</td>
+        <td>{{unFrais.nbjustificatifs}}</td>
+        <td>{{unFrais.id_visiteur}}</td>
+        <td>{{unFrais.lib_etat}}</td>
+
+        <td>
+          <button class="btn btn-primary" (click)="modifier(unFrais.id_frais)">
+            <span class="glyphicon glyphicon-pencil">
+            </span>
+            Modifier
+          </button>
+        </td>
+
+        <td>
+          <button
+            class="btn btn-danger" (click)="supprimer((unFrais.id_frais))"
+            onclick="javascript: if (confirm('Suppression confirmée ?')) {  }" >
+            <span class="glyphicon glyphicon-remove">
+            </span>
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

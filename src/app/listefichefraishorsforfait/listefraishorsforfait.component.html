@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<BR> <BR> <BR>
+<div>
+  <h1>
+    {{titre }}
+  </h1>
+  <BR> <BR>
+</div>
+<div class="container">
+  <div class="col-md-8">
+    <table class="table table-bordered table-striped table-responsive">
+        <thead>
+          <tr>
+            <th style="text-align: center"> idFrais </th>
+            <th style="text-align: center"> idFraisHorsForfait </th>
+            <th style="text-align: center"> Date Modification </th>
+            <th style="text-align: center"> Libellé Frais Hors Forfait </th>
+            <th style="text-align: center"> Montant Frais Hors Forfait </th>
+            <th style="text-align: center"> Modifier </th>
+            <th style="text-align: center"> Supprimer </th>
+          </tr>
+        </thead>
+        <tr *ngFor="let unFraisHF of mesFraisHT">
+          <td>{{unFraisHF.id_fraishorsforfait}}</td>
+          <td>{{unFraisHF.id_frais}}</td>
+          <td>{{unFraisHF.date_fraishorsforfait}}</td>
+          <td>{{unFraisHF.lib_fraishorsforfait}}</td>
+          <td>{{unFraisHF.montant_fraishorsforfait}}</td>
+          <td>
+            <button class="btn btn-primary" (click)="modifier(unFraisHF.id_fraishorsforfait)">
+              <span class="glyphicon glyphicon-pencil"></span> Modifier
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-primary" (click)="supprimer(unFraisHF.id_fraishorsforfait)">
+              <span class="glyphicon glyphicon-remove"></span> Supprimer
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td style="text-align: right;"> Montant total :</td>
+          <td style=""> {{montantTotal}} €</td>
+        </tr>
+    </table>
+    <br />
+    <div class="form-group">
+      <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+        <button type="button" (click)="ajouterFraisHorsForfait()" class="btn btn-default btn-primary">
+          <span class="glyphicon glyphicon-plus"></span> Ajouter
+        </button>
+        <button type="button" (click)="validerMontantFraisHorsForfait()" class="btn btn-default btn-primary">
+          <span class="glyphicon glyphicon-ok"></span> Valider
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
